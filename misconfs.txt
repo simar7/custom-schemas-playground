@@ -1,0 +1,22 @@
+$ trivy --debug conf --severity HIGH,CRITICAL --policy ./testing-stuff/good --namespaces user .
+2023-04-06T18:58:36.410-0700    DEBUG   Severities: ["HIGH" "CRITICAL"]
+2023-04-06T18:58:36.466-0700    DEBUG   cache dir:  /Users/simar/Library/Caches/trivy
+2023-04-06T18:58:36.466-0700    INFO    Misconfiguration scanning is enabled
+2023-04-06T18:58:36.467-0700    DEBUG   Policies successfully loaded from disk
+2023-04-06T18:58:36.467-0700    DEBUG   Walk the file tree rooted at '.' in parallel
+2023-04-06T18:58:37.519-0700    DEBUG   OS is not detected.
+2023-04-06T18:58:37.519-0700    INFO    Detected config files: 1
+2023-04-06T18:58:37.519-0700    DEBUG   Scanned config file: testing-stuff/configs/application-argocd.yaml
+
+testing-stuff/configs/application-argocd.yaml (kubernetes)
+
+Tests: 68 (SUCCESSES: 0, FAILURES: 1, EXCEPTIONS: 67)
+Failures: 1 (HIGH: 1, CRITICAL: 0)
+
+HIGH: Found Application 'website' but Applications are not allowed
+════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+No applications are allowed to run for some reason
+
+See https://google.ca
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
