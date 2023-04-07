@@ -1,0 +1,21 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: null
+  name: website
+  namespace: argocd
+spec: null
+  project: default
+  source: null
+    repoURL: https://github.com/Cloud-Native-Security/website
+    path: cns-website
+    directory: null
+      recurse: true
+  destination: null
+    server: https://kubernetes.default.svc
+    namespace: app
+  syncPolicy: null
+    automated: null
+      prune: true
+      selfHeal: true
+

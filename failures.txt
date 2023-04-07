@@ -1,0 +1,40 @@
+$ trivy --debug config --config-policy ./testing-stuff ./testing-stuff/configs/application-argocd.yaml
+2023-04-06T17:34:47.681-0700    DEBUG   Severities: ["UNKNOWN" "LOW" "MEDIUM" "HIGH" "CRITICAL"]
+2023-04-06T17:34:47.733-0700    DEBUG   cache dir:  /Users/simar/Library/Caches/trivy
+2023-04-06T17:34:47.733-0700    INFO    Misconfiguration scanning is enabled
+2023-04-06T17:34:47.733-0700    DEBUG   Policies successfully loaded from disk
+2023-04-06T17:34:47.733-0700    DEBUG   Walk the file tree rooted at 'testing-stuff/configs/application-argocd.yaml' in parallel
+2023-04-06T17:34:47.936-0700    FATAL   filesystem scan error:
+    github.com/aquasecurity/trivy/pkg/commands/artifact.Run
+        github.com/aquasecurity/trivy/pkg/commands/artifact/run.go:431
+  - scan error:
+    github.com/aquasecurity/trivy/pkg/commands/artifact.(*runner).scanArtifact
+        github.com/aquasecurity/trivy/pkg/commands/artifact/run.go:266
+  - scan failed:
+    github.com/aquasecurity/trivy/pkg/commands/artifact.scan
+        github.com/aquasecurity/trivy/pkg/commands/artifact/run.go:668
+  - failed analysis:
+    github.com/aquasecurity/trivy/pkg/scanner.Scanner.ScanArtifact
+        github.com/aquasecurity/trivy/pkg/scanner/scan.go:146
+  - failed to call hooks:
+    github.com/aquasecurity/trivy/pkg/fanal/artifact/local.Artifact.Inspect
+        github.com/aquasecurity/trivy/pkg/fanal/artifact/local/fs.go:179
+  - post handler error:
+    github.com/aquasecurity/trivy/pkg/fanal/handler.Manager.PostHandle
+        github.com/aquasecurity/trivy/pkg/fanal/handler/handler.go:75
+  - misconfiguration scan error:
+    github.com/aquasecurity/trivy/pkg/fanal/handler/misconf.misconfPostHandler.Handle
+        github.com/aquasecurity/trivy/pkg/fanal/handler/misconf/misconf.go:45
+  - scan config error:
+    github.com/aquasecurity/trivy/pkg/misconf.(*Scanner).Scan
+        github.com/aquasecurity/trivy/pkg/misconf/scanner.go:300
+  - 2 errors occurred:
+repos/custom-schemas-playground/testing-stuff/testpolicy.rego:11: rego_type_error: undefined ref: input.FOO
+        input.FOO
+              ^
+              have: "FOO"
+              want (one of): ["apiVersion" "kind" "metadata"]
+repos/custom-schemas-playground/testing-stuff/testpolicy.rego:12: rego_type_error: match error
+        left  : string
+        right : number
+
